@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Contact
+{% endblock %}
+
+{% block head %}
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
+<meta name="viewport" content="width=device-width, initil-scale=1.0" >
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="{% static 'CSS/contact.css' %}">
+{% endblock %}
+
+<!-- first grid section -->
+{% block body %}
+   <section id="contact-section">
+     <div class="container">
+         <h2> Contactez Nous</h2>
+           <p> Envoyez-nous un email et restez au courant des dernières nouvelles </p>
+         <div class="contact-form">
+
+             <!-- first grid section -->
+            <div>
+                <i class="fa fa-map"></i><span class="form-info"> Avenue Georges Bergmann, 127, 150, Ixelles</span><br>
+                <i class="fa fa-phone"></i><span class="form-info"> +32 477 06 96 94</span><br>
+                <i class="fa fa-envelope"></i><span class="form-info"> helpdesk@cleanpharmacycle.be</span><br>
+            </div>
+
+
+           <!-- Second Grid section -->
+            <div>
+               <form method="post">
+                   {% csrf_token %}
+                <input type="text" placeholder=" Prenom " required name="contact_prenom">
+                <input type="text" placeholder=" Nom" required name="contact_nom">
+               <input type="Email" placeholder="Adresse mail " required name="contact_mail">
+                <input type="text" placeholder="Objet" required name="contact_objet">
+               <textarea name="contact_message" placeholder="Message" rows="5" id="" required ></textarea>
+                   <button class="submit" name="contact_button"> Envoi du message </button>
+                </form>
+            </div>
+         </div>
+     </div>
+   </section>
+
+    {% if post %}
+	<div style='float:right'>
+   	<h3><strong><p style="color:white">{{ 'Message bien reçu!!!' }}</p></strong></h3>
+   	</div>
+   	{% endif %}
+
+
+{% endblock %}
